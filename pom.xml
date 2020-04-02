@@ -10,7 +10,7 @@
 
     <modules>
         <module>l02-java-start</module>
-        <module>l02-sample</module>
+        <module>l03-generics</module>
     </modules>
 
     <name>java_2020_03_examples</name>
