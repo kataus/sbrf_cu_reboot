@@ -2,7 +2,7 @@ package ru.itvitality.sbrf.cu.j2003.l02.example2;
 
 import java.util.concurrent.TimeUnit;
 
-public class Calculator {
+public class Calculator{
 
     public int add( int x, int y ) {
         return x + y;
