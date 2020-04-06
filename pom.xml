@@ -11,6 +11,7 @@
     <modules>
         <module>l02-java-start</module>
         <module>l03-generics</module>
+        <module>l04-tests</module>
     </modules>
 
     <name>java_2020_03_examples</name>
