@@ -13,6 +13,7 @@
         <module>l03-generics</module>
         <module>l04-tests</module>
         <module>l05-gc</module>
+        <module>l06-rd</module>
     </modules>
 
     <name>java_2020_03_examples</name>
