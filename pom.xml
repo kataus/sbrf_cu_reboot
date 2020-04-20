@@ -15,6 +15,7 @@
         <module>l05-gc</module>
         <module>l06-rd</module>
         <module>l07-byteCode</module>
+        <module>l08-reflections</module>
     </modules>
 
     <name>java_2020_03_examples</name>
