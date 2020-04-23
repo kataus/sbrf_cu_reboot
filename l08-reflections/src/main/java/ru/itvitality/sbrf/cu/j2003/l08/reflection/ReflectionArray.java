@@ -10,6 +10,7 @@ public class ReflectionArray {
         System.out.println("isArray: " + clazz.isArray());
         System.out.println("TypeName: " + clazz.getTypeName());
 
+
         Class<?> componentType = clazz.getComponentType();
         System.out.println("componentType: " + componentType);
 

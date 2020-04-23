@@ -19,7 +19,11 @@ public class ReflectionPrivate {
         System.out.println("--- private method execution:");
         Method privateMethod = clazz.getDeclaredMethod("privateMethod");
         privateMethod.setAccessible(true); //Делаем как бы "public"
+
         privateMethod.invoke(object);
+
+        //TODO только на инстанс
+
 
         System.out.println("--- changing private field:");
         Field field = clazz.getDeclaredField("value");

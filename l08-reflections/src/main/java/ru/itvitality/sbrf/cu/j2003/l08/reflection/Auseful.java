@@ -11,6 +11,7 @@ public class Auseful {
         var isArray = arr.getClass().isArray();
         var componentArr = arr.getClass().getComponentType();
         System.out.println("isArray:" + isArray + ",  componentArr:" + componentArr);
+        System.out.println("is String componentType" + System.class.getComponentType());
 
         Class<?> string = Class.forName("java.lang.String");
         var isIterableString = Iterable.class.isAssignableFrom(string);

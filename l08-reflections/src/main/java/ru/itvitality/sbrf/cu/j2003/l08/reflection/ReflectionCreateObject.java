@@ -11,6 +11,7 @@ public class ReflectionCreateObject {
     public static void main(String[] args) throws Exception {
 
         Class<DemoClass> clazz = DemoClass.class;
+
         System.out.println("Class Name:" + clazz.getSimpleName());
 
         Constructor<?>[] constructors = clazz.getConstructors();

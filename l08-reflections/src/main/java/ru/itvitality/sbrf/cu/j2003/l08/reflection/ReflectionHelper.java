@@ -7,7 +7,9 @@ import java.util.Arrays;
 
 
 @SuppressWarnings("SameParameterValue")
+
 public class ReflectionHelper {
+
     private ReflectionHelper() {
     }
 

@@ -16,6 +16,7 @@
         <module>l06-rd</module>
         <module>l07-byteCode</module>
         <module>l08-reflections</module>
+        <module>l09-java8</module>
     </modules>
 
     <name>java_2020_03_examples</name>
@@ -26,13 +27,72 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>5.4.2</junit.version>
+        <!--region BOMs -->
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
 
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
 
+        <vavr.version>1.0.0-alpha-3</vavr.version>
+        <checker.version>3.2.0</checker.version>
+        <annotations.version>19.0.0</annotations.version>
+        <jcip-annotations.version>1.0</jcip-annotations.version>
+        <spotbugs.version>4.0.0</spotbugs.version>
+        <error_prone_annotations.version>2.3.4</error_prone_annotations.version>
+
+        <lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
+        <lombok.verbose>true</lombok.verbose>
+        <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
+        <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
+        <lombok.testSourceDirectory>${project.basedir}/src/test/java</lombok.testSourceDirectory>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.vavr</groupId>
+                <artifactId>vavr</artifactId>
+                <version>${vavr.version}</version>
+            </dependency>
+            <!--region Common Annotations (CheckerFramework, JetBrains, SpotBugs, ErrorProne) -->
+            <dependency>
+                <groupId>org.checkerframework</groupId>
+                <artifactId>checker</artifactId>
+                <version>${checker.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${annotations.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>${jcip-annotations.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-annotations</artifactId>
+                <version>${spotbugs.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.google.errorprone</groupId>
+                <artifactId>error_prone_annotations</artifactId>
+                <version>${error_prone_annotations.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
@@ -43,6 +103,7 @@
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${junit.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

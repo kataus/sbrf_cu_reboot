@@ -15,16 +15,20 @@ public class DemoClass {
         return value;
     }
 
+    @Deprecated
     public void setValue(String value) {
+
         this.value = value;
     }
 
 
+    @Deprecated
     private void privateMethod() {
         System.out.println("privateMethod executed");
     }
 
     @Override
+
     @SimpleAnnotation
     public String toString() {
         return "DemoClass{" +
