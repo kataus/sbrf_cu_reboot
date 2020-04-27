@@ -32,12 +32,16 @@ public class MutationExamples {
     List<TestObjectMutable> newList = listMute.stream()
                                           .map(elem -> elem.updateValue(-1))
                                           .collect(Collectors.toList());
+    System.out.println(listMute);
     System.out.println(newList);
+
+    System.out.println("----------");
 
     //Лучше так - создаем новый экземпляр, если "надо бы поменять существующий"
     List<TestObjectUnMutable> newList2 = listUnMute.parallelStream()
                                              .map(elem -> elem.updateValue(-1))
                                              .collect(Collectors.toList());
+    System.out.println(listUnMute);
     System.out.println(newList2);
   }
 }

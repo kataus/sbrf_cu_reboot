@@ -15,7 +15,6 @@ public class TestUtils {
   private final String LINE_SEPARATOR = System.lineSeparator();
   private final String TEST_RESOURCES_PATH = "./src/test/resources/";
 
-  @NotNull
   private String fromPrintStream(@NotNull Consumer<PrintStream> printStreamConsumer) {
     val out = new ByteArrayOutputStream();
     @Cleanup val printStream = new PrintStream(out);
@@ -23,7 +22,7 @@ public class TestUtils {
     return new String(out.toByteArray()).intern();
   }
 
-  @NotNull
+
   @Contract("_ -> new")
   public String fromSystemOutPrint(@NotNull Runnable task) {
     return fromPrintStream(printStream -> {
@@ -34,7 +33,7 @@ public class TestUtils {
     });
   }
 
-  @NotNull
+
   public String fromSystemOutPrintln(@NotNull Runnable runnable) {
     String s = fromSystemOutPrint(runnable);
     return s.endsWith(LINE_SEPARATOR) ?
@@ -42,7 +41,7 @@ public class TestUtils {
                s;
   }
 
-  @NotNull
+
   @Contract(pure = true)
   public String toTestResourceFilePath(@NotNull String fileName) {
     return TEST_RESOURCES_PATH + fileName;

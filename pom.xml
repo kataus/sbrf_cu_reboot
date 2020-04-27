@@ -17,6 +17,7 @@
         <module>l07-byteCode</module>
         <module>l08-reflections</module>
         <module>l09-java8</module>
+        <module>l10-solid</module>
     </modules>
 
     <name>java_2020_03_examples</name>

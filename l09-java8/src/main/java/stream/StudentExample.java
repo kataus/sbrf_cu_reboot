@@ -35,6 +35,7 @@ public class StudentExample {
     for (Student student : result)
       System.out.println(student.getName());
 
+    System.out.println("--------");
     /*
      * STREAM (Java1.8+) style
      */
@@ -44,6 +45,7 @@ public class StudentExample {
         .filter(student -> student.getAge() == 22)
         .sorted(Comparator.comparingDouble(Student::getAvgMark).reversed())
         .map(Student::getName)
+            
         .forEach(System.out::println);
   }
 }

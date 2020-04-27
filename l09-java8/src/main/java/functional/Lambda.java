@@ -31,9 +31,12 @@ public class Lambda {
 
     //int[] initValue - не поле инстанса или класса, но сохраняет свое значение между вызовами функции
     Supplier<Integer> closure = lambda.generator();
-    System.out.println("1:" + closure.get());
     System.out.println("2:" + closure.get());
+    System.out.println("1:" + closure.get());
+
     System.out.println("3:" + closure.get());
+    String a = "Hello";
+    a += " world";
   }
 
 

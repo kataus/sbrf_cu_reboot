@@ -1,5 +1,6 @@
 package functional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,6 +23,8 @@ public class MonadExample {
 
   private String function(String str) {
     Optional<String> optional = Optional.ofNullable(str);
+
+
 
     optional.stream().map(val -> "!" + val.toUpperCase()).forEach(System.out::println);
 

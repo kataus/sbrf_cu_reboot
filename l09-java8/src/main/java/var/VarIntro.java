@@ -12,7 +12,7 @@ import java.util.List;
  * created on 09.12.18.
  */
 public class VarIntro {
-  //var field; ошибка компиляции
+  //var field; //ошибка компиляции
 
   public static void main(String... __) throws IOException {
     new VarIntro().test(5);
@@ -21,7 +21,7 @@ public class VarIntro {
   //private var test(var val) throws IOException { Ошибка компиляции
   private String test(int val) throws IOException {
     var example = "ValueStr"; //String
-    //        example = "newString";
+            example = "newString";
     //        example = 5; //нельзя изменить тип
     //        var error = null; //ошибка, тип неопределен
 
@@ -41,9 +41,10 @@ public class VarIntro {
     }
 
 
-    //    var nameList = new ArrayList<>(); //тоже не понятен тип
-    //    nameList.add("kjbdfag");
-    //    nameList.add(12342);
+
+//       var nameList = new ArrayList<>(); //тоже не понятен тип
+//        nameList.add("kjbdfag");
+//        nameList.add(12342);
     var stringList = new ArrayList<String>(); //а тут уже все ясно
 
     //Посмотрите на var в debug
