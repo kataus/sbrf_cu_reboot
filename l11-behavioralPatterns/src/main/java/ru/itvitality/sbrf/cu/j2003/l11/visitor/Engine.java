@@ -9,4 +9,8 @@ public class Engine implements Element {
     String checkEngine() {
         return "Engine Ok";
     }
+
+    public void getPower(){
+
+    }
 }

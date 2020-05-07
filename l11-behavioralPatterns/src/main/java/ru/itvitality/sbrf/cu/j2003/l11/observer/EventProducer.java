@@ -3,15 +3,18 @@ package ru.itvitality.sbrf.cu.j2003.l11.observer;
 import java.util.ArrayList;
 import java.util.List;
 
-class EventProducer {
+
+class EventProducer implements Producer {
 
     private final List<Listener> listeners = new ArrayList<>();
 
-    void addListener(Listener listener) {
+    @Override
+    public void addListener(Listener listener) {
         listeners.add(listener);
     }
 
-    void removeListener(Listener listener) {
+    @Override
+    public void removeListener(Listener listener) {
         listeners.remove(listener);
     }
 

@@ -19,6 +19,8 @@
         <module>l09-java8</module>
         <module>l10-solid</module>
         <module>l11-behavioralPatterns</module>
+        <module>l12-creationPatterns</module>
+        <module>l12-structuralPatterns</module>
     </modules>
 
     <name>java_2020_03_examples</name>

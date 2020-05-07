@@ -14,9 +14,11 @@ public class Demo {
 
         //Критически важно удалять, когда не нужны
         producer.removeListener(consumerA);
-        producer.removeListener(consumerB.getListener());
 
         producer.event("eventC");
+        producer.removeListener(consumerB.getListener());
+
+
         producer.event("eventD");
     }
 }
