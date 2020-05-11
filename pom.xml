@@ -21,6 +21,7 @@
         <module>l11-behavioralPatterns</module>
         <module>l12-creationPatterns</module>
         <module>l12-structuralPatterns</module>
+        <module>l13-serialization</module>
     </modules>
 
     <name>java_2020_03_examples</name>
@@ -48,6 +49,9 @@
         <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
         <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
         <lombok.testSourceDirectory>${project.basedir}/src/test/java</lombok.testSourceDirectory>
+
+        <javax.json.version>1.1.4</javax.json.version>
+        <protobuf.version>3.11.4</protobuf.version>
     </properties>
 
     <dependencyManagement>
@@ -106,6 +110,17 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>javax.json</artifactId>
+                <version>${javax.json.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java-util</artifactId>
+                <version>${protobuf.version}</version>
             </dependency>
 
         </dependencies>
