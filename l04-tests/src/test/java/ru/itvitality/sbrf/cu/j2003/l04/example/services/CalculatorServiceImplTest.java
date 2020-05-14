@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
+
 @DisplayName("Сервис CalculatorService должен ")
 class CalculatorServiceImplTest {
 

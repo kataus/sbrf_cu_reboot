@@ -29,30 +29,58 @@
     <packaging>pom</packaging>
 
     <properties>
+        <!--region General-->
+        <java.version>11</java.version>
+        <minimal.maven.version>3.6.1</minimal.maven.version>
+        <revision>0.0.1-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <junit.version>5.4.2</junit.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--endregion-->
+
         <!--region BOMs -->
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <!--endregion-->
 
-        <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
-
+        <!--region Libs -->
+        <com.google.guava.version>28.2-jre</com.google.guava.version>
+        <commons-io.version>2.6</commons-io.version>
+        <lombok.version>1.18.12</lombok.version>
         <vavr.version>1.0.0-alpha-3</vavr.version>
+        <jmh-core.version>1.23</jmh-core.version>
+        <jol-core.version>0.10</jol-core.version>
+        <asm.version>7.3.1</asm.version>
+        <javax.json.version>1.1.4</javax.json.version>
+        <protobuf.version>3.11.4</protobuf.version>
+
         <checker.version>3.2.0</checker.version>
         <annotations.version>19.0.0</annotations.version>
         <jcip-annotations.version>1.0</jcip-annotations.version>
         <spotbugs.version>4.0.0</spotbugs.version>
         <error_prone_annotations.version>2.3.4</error_prone_annotations.version>
+        <!--endregion-->
+
+        <!--region Plugins-->
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.forceJavacCompilerUse>true</maven.compiler.forceJavacCompilerUse>
+
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
+        <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
+        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
 
         <lombok-maven-plugin.version>1.18.12.0</lombok-maven-plugin.version>
         <lombok.verbose>true</lombok.verbose>
         <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
         <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
         <lombok.testSourceDirectory>${project.basedir}/src/test/java</lombok.testSourceDirectory>
+        <!--endregion-->
 
-        <javax.json.version>1.1.4</javax.json.version>
-        <protobuf.version>3.11.4</protobuf.version>
+        <protoc-jar-maven-plugin.version>3.11.4</protoc-jar-maven-plugin.version>
+
+        <junit.version>5.3.2</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -124,7 +152,137 @@
                 <version>${protobuf.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.junit.vintage</groupId>
+                <artifactId>junit-vintage-engine</artifactId>
+                <version>5.6.0-M1</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+
+        <!--region Test dependencies - JUnit Jupiter, AssertJ, Hamcrest, Mockito -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-junit-jupiter</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.jupiter</groupId>-->
+<!--            <artifactId>junit-jupiter-engine</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.junit.vintage</groupId>-->
+<!--            <artifactId>junit-vintage-engine</artifactId>-->
+<!--        </dependency>-->
+        <!--endregion-->
+
+    </dependencies>
+
+    <build>
+
+        <defaultGoal>verify</defaultGoal>
+
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                            <arg>--enable-preview</arg>
+                            <!--<arg>-Xlint:preview</arg>-->
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <configuration>
+                        <argLine>--enable-preview</argLine>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-maven</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${minimal.maven.version}</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok-maven-plugin</artifactId>
+                    <version>${lombok-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.os72</groupId>
+                    <artifactId>protoc-jar-maven-plugin</artifactId>
+                    <version>${protoc-jar-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-sources</phase>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                            <configuration>
+                                <inputDirectories>
+                                    <include>src/main/resources</include>
+                                </inputDirectories>
+                                <outputTargets>
+                                    <outputTarget>
+                                        <type>java</type>
+                                        <outputDirectory>src/main/java/</outputDirectory>
+                                    </outputTarget>
+                                </outputTargets>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+
+    </build>
 
 </project>

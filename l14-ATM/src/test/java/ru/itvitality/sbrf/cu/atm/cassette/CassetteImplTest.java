@@ -10,6 +10,7 @@ import ru.itvitality.sbrf.cu.atm.ref.Nominal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+
 @DisplayName(value = "Кассета должна ")
 public class CassetteImplTest {
     private Cassette cassette;
