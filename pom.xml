@@ -22,6 +22,7 @@
         <module>l12-creationPatterns</module>
         <module>l12-structuralPatterns</module>
         <module>l13-serialization</module>
+        <module>l14-ATM</module>
     </modules>
 
     <name>java_2020_03_examples</name>
