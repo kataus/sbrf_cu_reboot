@@ -1,0 +1,4 @@
+{
+"message": "Hello, World, from Protobuf",
+"arrayIntData": [10, 20, 30]
+}

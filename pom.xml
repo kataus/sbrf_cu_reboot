@@ -23,6 +23,7 @@
         <module>l12-structuralPatterns</module>
         <module>l13-serialization</module>
         <module>l14-ATM</module>
+        <module>l15-nio</module>
     </modules>
 
     <name>java_2020_03_examples</name>
@@ -31,6 +32,7 @@
     <properties>
         <!--region General-->
         <java.version>11</java.version>
+
         <minimal.maven.version>3.6.1</minimal.maven.version>
         <revision>0.0.1-SNAPSHOT</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -204,7 +206,7 @@
                         <compilerArgs>
                             <arg>-parameters</arg>
                             <arg>--enable-preview</arg>
-                            <!--<arg>-Xlint:preview</arg>-->
+<!--                            <arg>-Xlint:preview</arg>-->
                         </compilerArgs>
                     </configuration>
                 </plugin>
