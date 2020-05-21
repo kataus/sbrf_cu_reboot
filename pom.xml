@@ -24,6 +24,7 @@
         <module>l13-serialization</module>
         <module>l14-ATM</module>
         <module>l15-nio</module>
+        <module>l16-jdbc</module>
     </modules>
 
     <name>java_2020_03_examples</name>

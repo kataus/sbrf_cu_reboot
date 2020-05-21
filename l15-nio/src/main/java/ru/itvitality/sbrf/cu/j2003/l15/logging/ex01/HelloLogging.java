@@ -14,14 +14,13 @@ public class HelloLogging {
     private void log() {
         String value = "test";
 
-/*      Устаревший вариант
-        if (logger.isDebugEnabled()) {
-            logger.error("Hello logging:" + value);
-        }
-*/
+//      Устаревший вариант
+//        if (logger.isDebugEnabled()) {
+//            logger.debug("Hello logging:" + value);
+//        }
 
         //Современный вариант
-        logger.error("Hello logging:{}", value);
+        logger.debug("Hello logging:{}", value);
 
         try {
             Thread.sleep(3_000);

@@ -17,6 +17,7 @@
             <maxFileSize>1MB</maxFileSize>
             <maxHistory>60</maxHistory>
             <totalSizeCap>10MB</totalSizeCap>
+            <!-- TODO добавить пример по времени rolling -->
         </rollingPolicy>
     </appender>
 

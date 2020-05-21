@@ -2,6 +2,7 @@ package ru.itvitality.sbrf.cu.j2003.l15.nio;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -21,7 +22,7 @@ public class FilesExample {
 
         Files.createDirectory(Paths.get("l15-nio/tmp"));
 
-        Path source = Paths.get("Ll15-nio/src/main/resources/share.xml");
+        Path source = Paths.get("l15-nio/src/main/resources/share.xml");
         Path destination = Paths.get("l15-nio/tmp/share.xml");
 
         Files.copy(source, destination);

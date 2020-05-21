@@ -11,6 +11,7 @@ public class PathExample {
 
     private void go() throws IOException {
         Path shareXml = Paths.get("l15-nio/src/main/resources/share.xml");
+
         System.out.println("FileName:" + shareXml.getFileName());
         System.out.println("FileSystem:" + shareXml.getFileSystem());
         System.out.println("Parent:" + shareXml.getParent());
