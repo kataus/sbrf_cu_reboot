@@ -6,9 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Savepoint;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.itvitality.sbrf.cu.j2003.l16.core.model.User;
 
 public class H2demo {
   private static final String URL = "jdbc:h2:mem:";
@@ -52,7 +54,8 @@ public class H2demo {
   }
 
   private void selectRecord(int id) throws SQLException {
-    try (PreparedStatement pst = this.connection.prepareStatement("select name from test where id  = ?")) {
+    try (PreparedStatement pst
+                 = this.connection.prepareStatement("select name from test where id  = ?")) {
       pst.setInt(1, id);
       try (ResultSet rs = pst.executeQuery()) {
         StringBuilder outString = new StringBuilder();
@@ -68,5 +71,38 @@ public class H2demo {
   private void close() throws SQLException {
     this.connection.close();
   }
+
+  public Optional<User> getUser(int id) throws SQLException {
+      Optional<User> result = Optional.empty();
+      try (Connection connection = DriverManager.getConnection(URL);
+        PreparedStatement ps
+                = connection.prepareStatement("select id, name from users where id = ? and age > ?")){
+        ps.setInt(1, id);
+        ps.setInt(2, 30);
+        try(ResultSet rs = ps.executeQuery()){
+         if (rs.next()){
+           int cur = rs.getInt("id");
+           String name = rs.getString(2);
+           result = Optional.of(new User(cur, name));
+         }
+        }
+      }
+      return result;
+  }
+
+  public Optional<User> updateUser(User user) throws SQLException {
+    Optional<User> result = Optional.empty();
+    try (Connection connection = DriverManager.getConnection(URL);
+         PreparedStatement ps
+                 = connection.prepareStatement("update ...id = ? and age > ?")){
+      connection.setAutoCommit(false);
+      ps.setInt(1, Math.toIntExact(user.getId()));
+      ps.setInt(2, 30);
+      int rs = ps.executeUpdate();
+//      connection.r
+    }
+    return result;
+  }
+
 
 }

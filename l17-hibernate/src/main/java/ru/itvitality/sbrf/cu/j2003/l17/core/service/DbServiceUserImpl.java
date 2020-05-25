@@ -1,10 +1,10 @@
-package ru.itvitality.sbrf.cu.j2003.l16.core.service;
+package ru.itvitality.sbrf.cu.j2003.l17.core.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.itvitality.sbrf.cu.j2003.l16.core.dao.UserDao;
-import ru.itvitality.sbrf.cu.j2003.l16.core.model.User;
-import ru.itvitality.sbrf.cu.j2003.l16.core.sessionmanager.SessionManager;
+import ru.itvitality.sbrf.cu.j2003.l17.core.dao.UserDao;
+import ru.itvitality.sbrf.cu.j2003.l17.core.model.User;
+import ru.itvitality.sbrf.cu.j2003.l17.core.sessionmanager.SessionManager;
 
 import java.util.Optional;
 
@@ -35,6 +35,7 @@ public class DbServiceUserImpl implements DBServiceUser {
     }
   }
 
+
   @Override
   public Optional<User> getUser(long id) {
     try (SessionManager sessionManager = userDao.getSessionManager()) {
@@ -51,7 +52,4 @@ public class DbServiceUserImpl implements DBServiceUser {
       return Optional.empty();
     }
   }
-
-
-
 }
