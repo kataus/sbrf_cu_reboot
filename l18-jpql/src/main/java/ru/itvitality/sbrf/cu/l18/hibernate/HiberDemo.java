@@ -32,14 +32,15 @@ public class HiberDemo {
     public static void main( String[] args ) {
         HiberDemo demo = new HiberDemo();
 
-        demo.entityExample();
+//        demo.entityExample();
 
-        //   demo.leakageExample();
-        //  demo.fetchExample();
-        //   demo.JPQLexample();
-        //   demo.deleteFrom();
+//           demo.leakageExample();
+//          demo.fetchExample();
+//           demo.JPQLexample();
+//           demo.deleteFrom();
         //   demo.nativeExample();
 
+        demo.sessionFactory.close();
     }
 
     private HiberDemo() {
@@ -139,11 +140,12 @@ public class HiberDemo {
             logger.info( ">>>>>>>>>>>>>>>>>>>>>>>   selectedPhone: {}", selectedPhone );
 
             selectedPerson = session.load( Person.class, personId );
-            //} // сессия закрылась раньше, чеем мы воспользовались объектом.
+
 
             logger.info( ">>>>>>>>>>>>>>>>>>>>>>>  selected person: {}", selectedPerson.getName() );
+        } // сессия закрылась раньше, чеем мы воспользовались объектом.
             logger.info( "phones:{}", selectedPerson.getPhones() );
-        }
+//        }
     }
 
 
@@ -183,6 +185,7 @@ public class HiberDemo {
                 "select p from Phone p where p.id > :paramId", Phone.class )
                 .setParameter( "paramId", 2L )
                 .getResultList();
+
 
         logger.info( "selectedPhones:{}", selectedPhones );
 

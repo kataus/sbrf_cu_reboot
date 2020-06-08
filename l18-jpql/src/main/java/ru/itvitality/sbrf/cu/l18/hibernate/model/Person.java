@@ -3,13 +3,7 @@ package ru.itvitality.sbrf.cu.l18.hibernate.model;
 
 import org.hibernate.annotations.NamedQuery;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,8 +29,9 @@ public class Person {
 
   private Date createdOn;
 
-  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  //@OneToMany // вариант 2 создания схемы
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+//  @OneToMany // вариант 2 создания схемы
   private List<Phone> phones = new ArrayList<>();
 
 

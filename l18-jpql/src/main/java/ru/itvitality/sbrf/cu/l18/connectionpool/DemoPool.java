@@ -46,6 +46,7 @@ public class DemoPool {
     private void createTable() throws SQLException {
         try ( Connection connection = dataSourcePool.getConnection();
               PreparedStatement pst = connection.prepareStatement( "create table test(id int, name varchar(50))" ) ) {
+            logger.info( "Connection", connection.hashCode() );
             pst.executeUpdate();
         }
     }
@@ -53,6 +54,7 @@ public class DemoPool {
     private void insertRecords() throws SQLException {
         try ( Connection connection = dataSourcePool.getConnection();
               PreparedStatement pst = connection.prepareStatement( "insert into test(id, name) values (?, ?)" ) ) {
+            logger.info( "Connection", connection.hashCode() );
             Savepoint savePoint = connection.setSavepoint( "savePointName" );
             try {
                 int rowCount = 0;
@@ -73,6 +75,7 @@ public class DemoPool {
     private void useConnectionPool() throws SQLException {
         try ( Connection connection = dataSourcePool.getConnection();
               PreparedStatement pst = connection.prepareStatement( "select count(*) as counter from test" ) ) {
+            logger.info( "Connection", connection.hashCode() );
             try ( ResultSet rs = pst.executeQuery() ) {
                 if ( rs.next() ) {
                     logger.info( "counter: {}", rs.getString( "counter" ) );
