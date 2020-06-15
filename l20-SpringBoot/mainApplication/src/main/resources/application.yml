@@ -1,10 +1,11 @@
 server:
-  port: 8080
+  port: 8090
 management:
   endpoints:
     web:
       exposure:
         include: info, health, beans
+
 
 application:
   message: "Test Props msg"

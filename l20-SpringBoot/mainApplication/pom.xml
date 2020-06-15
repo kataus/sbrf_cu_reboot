@@ -25,7 +25,6 @@
         <messager-starter.version>0.0.1-SNAPSHOT</messager-starter.version>
     </properties>
 
-
     <!-- Стартеры -->
     <dependencies>
         <dependency>
@@ -42,6 +41,7 @@
             <groupId>ru.sbrf.cu</groupId>
             <artifactId>messager-starter</artifactId>
             <version>${messager-starter.version}</version>
+
         </dependency>
 
         <dependency>
@@ -50,8 +50,8 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- эффект стартера
-        <dependency>
+        <!-- эффект стартера -->
+       <!-- <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.2</version>

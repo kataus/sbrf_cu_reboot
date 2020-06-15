@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  MessagerAutoConfiguration
+  ru.sbrf.cu.MessagerAutoConfiguration
