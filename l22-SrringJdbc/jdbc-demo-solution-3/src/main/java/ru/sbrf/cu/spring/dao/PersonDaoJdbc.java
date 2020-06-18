@@ -2,6 +2,7 @@ package ru.sbrf.cu.spring.dao;
 
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.stereotype.Repository;
+import ru.sbrf.cu.spring.domain.Person;
 
 @SuppressWarnings({"SqlNoDataSourceInspection", "ConstantConditions", "SqlDialectInspection"})
 @Repository
@@ -18,4 +19,8 @@ public class PersonDaoJdbc implements PersonDao {
         return jdbc.queryForObject("select count(*) from persons", Integer.class);
     }
 
+    @Override
+    public void insert(Person person) {
+        jdbc.update("insert into persons values (?,?)", person.getId(), person.getName());
+    }
 }
