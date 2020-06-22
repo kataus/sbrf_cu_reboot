@@ -59,7 +59,7 @@ public class GcDemo {
         int loopCounter = 1000;
         //int loopCounter = 100000;
         MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        ObjectName name = new ObjectName( "ru.otus:type=Benchmark" );
+        ObjectName name = new ObjectName( "ru.sbrf.cu:type=Benchmark" );
 
         Benchmark mbean = new Benchmark( loopCounter );
         mbs.registerMBean( mbean, name );

@@ -3,7 +3,7 @@ package ru.itvitality.sbrf.cu.j2003.l06;
 
 /*
 cd L07-remoteDebug/target/classes/
-java -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n ru.otus.RemoteDebug
+java -Xdebug -Xrunjdwp:transport=dt_socket,address=5005,server=y,suspend=n ru.sbrf.cu.RemoteDebug
 */
 public class RemoteDebug {
 
