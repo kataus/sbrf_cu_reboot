@@ -2,7 +2,7 @@ package ru.sbrf.cu.example.ormdemo.repositories;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ru.sbrf.cu.example.ormdemo.models.OtusStudent;
+import ru.sbrf.cu.example.ormdemo.models.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,13 +17,13 @@ import java.util.Optional;
 // Поэтому, для упрощения, пока вешаем над классом репозитория
 @Transactional
 @Repository
-public class OtusStudentRepositoryJpaImpl implements OtusStudentRepositoryJpa {
+public class StudentRepositoryJpaImpl implements StudentRepositoryJpa {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public OtusStudent save(OtusStudent student) {
+    public Student save(Student student) {
         if (student.getId() <= 0) {
             em.persist(student);
             return student;
@@ -33,22 +33,22 @@ public class OtusStudentRepositoryJpaImpl implements OtusStudentRepositoryJpa {
     }
 
     @Override
-    public Optional<OtusStudent> findById(long id) {
-        return Optional.ofNullable(em.find(OtusStudent.class, id));
+    public Optional<Student> findById(long id) {
+        return Optional.ofNullable(em.find(Student.class, id));
     }
 
     @Override
-    public List<OtusStudent> findAll() {
-        return em.createQuery("select s from OtusStudent s", OtusStudent.class)
+    public List<Student> findAll() {
+        return em.createQuery("select s from Student s", Student.class)
                 .getResultList();
     }
 
     @Override
-    public List<OtusStudent> findByName(String name) {
-        TypedQuery<OtusStudent> query = em.createQuery("select s " +
-                        "from OtusStudent s " +
+    public List<Student> findByName(String name) {
+        TypedQuery<Student> query = em.createQuery("select s " +
+                        "from Student s " +
                         "where s.name = :name",
-                OtusStudent.class);
+                Student.class);
         query.setParameter("name", name);
         return query.getResultList();
     }

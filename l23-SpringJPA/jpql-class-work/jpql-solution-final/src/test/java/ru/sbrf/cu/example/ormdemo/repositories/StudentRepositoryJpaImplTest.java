@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
-import ru.sbrf.cu.example.ormdemo.models.OtusStudent;
+import ru.sbrf.cu.example.ormdemo.models.Student;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе Jpa для работы со студентами ")
 @DataJpaTest
-@Import(OtusStudentRepositoryJpaImpl.class)
-class OtusStudentRepositoryJpaImplTest {
+@Import(StudentRepositoryJpaImpl.class)
+class StudentRepositoryJpaImplTest {
 
     private static final int EXPECTED_NUMBER_OF_STUDENTS = 10;
     private static final long FIRST_STUDENT_ID = 1L;
 
-    private static final int EXPECTED_QUERIES_COUNT = 2;
+    private static final int EXPECTED_QUERIES_COUNT = 3;
 
     @Autowired
-    private OtusStudentRepositoryJpaImpl repositoryJpa;
+    private StudentRepositoryJpaImpl repositoryJpa;
 
     @Autowired
     private TestEntityManager em;
@@ -32,7 +32,7 @@ class OtusStudentRepositoryJpaImplTest {
     @Test
     void shouldFindExpectedStudentById() {
         val optionalActualStudent = repositoryJpa.findById(FIRST_STUDENT_ID);
-        val expectedStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val expectedStudent = em.find(Student.class, FIRST_STUDENT_ID);
         assertThat(optionalActualStudent).isPresent().get()
                 .isEqualToComparingFieldByField(expectedStudent);
     }

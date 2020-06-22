@@ -14,10 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity // Указывает, что данный класс является сущностью
-@Table(name = "otus_students") // Задает имя таблицы, на которую будет отображаться сущность
-@NamedEntityGraph(name = "otus-student-avatars-entity-graph",
+@Table(name = "students") // Задает имя таблицы, на которую будет отображаться сущность
+@NamedEntityGraph(name = "student-avatars-entity-graph",
         attributeNodes = {@NamedAttributeNode("avatar")})
-public class OtusStudent {
+public class Student {
     @Id // Позволяет указать какое поле является идентификатором
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Стратегия генерации идентификаторов
     private long id;

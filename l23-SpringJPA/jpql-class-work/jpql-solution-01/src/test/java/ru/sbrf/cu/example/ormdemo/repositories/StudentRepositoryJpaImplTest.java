@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
-import ru.sbrf.cu.example.ormdemo.models.OtusStudent;
+import ru.sbrf.cu.example.ormdemo.models.Student;
 import ru.sbrf.cu.example.ormdemo.models.Avatar;
 import ru.sbrf.cu.example.ormdemo.models.Course;
 import ru.sbrf.cu.example.ormdemo.models.EMail;
@@ -20,8 +20,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Репозиторий на основе Jpa для работы со студентами ")
 @DataJpaTest
-@Import(OtusStudentRepositoryJpaImpl.class)
-class OtusStudentRepositoryJpaImplTest {
+@Import(StudentRepositoryJpaImpl.class)
+class StudentRepositoryJpaImplTest {
 
     private static final int EXPECTED_NUMBER_OF_STUDENTS = 10;
     private static final long FIRST_STUDENT_ID = 1L;
@@ -35,7 +35,7 @@ class OtusStudentRepositoryJpaImplTest {
     private static final String STUDENT_NAME = "Вася";
 
     @Autowired
-    private OtusStudentRepositoryJpaImpl repositoryJpa;
+    private StudentRepositoryJpaImpl repositoryJpa;
 
     @Autowired
     private TestEntityManager em;
@@ -44,7 +44,7 @@ class OtusStudentRepositoryJpaImplTest {
     @Test
     void shouldFindExpectedStudentById() {
         val optionalActualStudent = repositoryJpa.findById(FIRST_STUDENT_ID);
-        val expectedStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val expectedStudent = em.find(Student.class, FIRST_STUDENT_ID);
         assertThat(optionalActualStudent).isPresent().get()
                 .isEqualToComparingFieldByField(expectedStudent);
     }
@@ -79,11 +79,11 @@ class OtusStudentRepositoryJpaImplTest {
         val courses = Collections.singletonList(course);
 
 
-        val vasya = new OtusStudent(0, STUDENT_NAME, avatar, emails, courses);
+        val vasya = new Student(0, STUDENT_NAME, avatar, emails, courses);
         repositoryJpa.save(vasya);
         assertThat(vasya.getId()).isGreaterThan(0);
 
-        val actualStudent = em.find(OtusStudent.class, vasya.getId());
+        val actualStudent = em.find(Student.class, vasya.getId());
         assertThat(actualStudent).isNotNull().matches(s -> !s.getName().equals(""))
                 .matches(s -> s.getCourses() != null && s.getCourses().size() > 0 && s.getCourses().get(0).getId() > 0)
                 .matches(s -> s.getAvatar() != null)
@@ -93,20 +93,20 @@ class OtusStudentRepositoryJpaImplTest {
     @DisplayName(" должен загружать информацию о нужном студенте по его имени")
     @Test
     void shouldFindExpectedStudentByName() {
-        val firstStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
-        List<OtusStudent> students = repositoryJpa.findByName(FIRST_STUDENT_NAME);
+        val firstStudent = em.find(Student.class, FIRST_STUDENT_ID);
+        List<Student> students = repositoryJpa.findByName(FIRST_STUDENT_NAME);
         assertThat(students).containsOnlyOnce(firstStudent);
     }
 
     @DisplayName(" должен изменять имя заданного студента по его id")
     @Test
     void shouldUpdateStudentNameById() {
-        val firstStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val firstStudent = em.find(Student.class, FIRST_STUDENT_ID);
         String oldName = firstStudent.getName();
         em.detach(firstStudent);
 
         repositoryJpa.updateNameById(FIRST_STUDENT_ID, STUDENT_NAME);
-        val updatedStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val updatedStudent = em.find(Student.class, FIRST_STUDENT_ID);
 
         assertThat(updatedStudent.getName()).isNotEqualTo(oldName).isEqualTo(STUDENT_NAME);
     }
@@ -114,12 +114,12 @@ class OtusStudentRepositoryJpaImplTest {
     @DisplayName(" должен удалять заданного студента по его id")
     @Test
     void shouldDeleteStudentNameById() {
-        val firstStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val firstStudent = em.find(Student.class, FIRST_STUDENT_ID);
         assertThat(firstStudent).isNotNull();
         em.detach(firstStudent);
 
         repositoryJpa.deleteById(FIRST_STUDENT_ID);
-        val deletedStudent = em.find(OtusStudent.class, FIRST_STUDENT_ID);
+        val deletedStudent = em.find(Student.class, FIRST_STUDENT_ID);
 
         assertThat(deletedStudent).isNull();
     }

@@ -9,11 +9,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity // Указывает, что данный класс является сущностью
-@Table(name = "otus_students") // Задает имя таблицы, на которую будет отображаться сущность
-// Позволяет указать какие связи родительской сущности загружать в одном с ней запросе
-@NamedEntityGraph(name = "otus-student-avatars-entity-graph",
-        attributeNodes = {@NamedAttributeNode("avatar")})
-public class OtusStudent {
+@Table(name = "students") // Задает имя таблицы, на которую будет отображаться сущность
+public class Student {
     @Id // Позволяет указать какое поле является идентификатором
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Стратегия генерации идентификаторов
     private long id;

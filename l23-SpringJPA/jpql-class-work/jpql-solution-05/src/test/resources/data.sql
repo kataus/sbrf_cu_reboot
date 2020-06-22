@@ -6,7 +6,7 @@ insert into courses(name)
 values ('course_name_01'), ('course_name_02'), ('course_name_03'), ('course_name_04'), ('course_name_05'),
        ('course_name_06'), ('course_name_07'), ('course_name_08'), ('course_name_09'), ('course_name_10'), ('not_used_11');
 
-insert into otus_students(name, avatar_id)
+insert into students(name, avatar_id)
 values ('student_01', 1), ('student_02', 2), ('student_03', 3), ('student_04', 4), ('student_05', 5),
        ('student_06', 6), ('student_07', 7), ('student_08', 8), ('student_09', 9), ('student_10', 10);
 

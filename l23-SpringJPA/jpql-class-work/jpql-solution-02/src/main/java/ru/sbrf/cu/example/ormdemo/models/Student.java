@@ -9,8 +9,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity // Указывает, что данный класс является сущностью
-@Table(name = "otus_students") // Задает имя таблицы, на которую будет отображаться сущность
-public class OtusStudent {
+@Table(name = "students") // Задает имя таблицы, на которую будет отображаться сущность
+public class Student {
     @Id // Позволяет указать какое поле является идентификатором
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Стратегия генерации идентификаторов
     private long id;
