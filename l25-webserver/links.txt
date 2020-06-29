@@ -1,0 +1,9 @@
+https://reqbin.com/
+https://www.cbr-xml-daily.ru/daily_json.js
+
+https://developer.mozilla.org/ru/docs/Web/HTTP/Overview
+
+https://www.eclipse.org/jetty/documentation/current/
+https://www.eclipse.org/jetty/documentation/current/creating-custom-protocol.html
+
+https://freemarker.apache.org/docs/index.html
