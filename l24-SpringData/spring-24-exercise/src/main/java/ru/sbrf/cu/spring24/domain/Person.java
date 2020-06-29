@@ -3,8 +3,10 @@ package ru.sbrf.cu.spring24.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "persons")
 public class Person {
 
     @Id
@@ -12,8 +14,13 @@ public class Person {
     private int id;
     private String name;
 
+    private Boolean active;
+
     public Person(String name) {
         this.name = name;
+    }
+
+    public Person() {
     }
 
     public int getId() {
@@ -30,5 +37,15 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder( "Person{" );
+        sb.append( "id=" ).append( id );
+        sb.append( ", name='" ).append( name ).append( '\'' );
+        sb.append( '}' );
+        return sb.toString();
     }
 }

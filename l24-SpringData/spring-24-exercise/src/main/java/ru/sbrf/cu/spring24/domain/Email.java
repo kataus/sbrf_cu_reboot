@@ -1,8 +1,22 @@
 package ru.sbrf.cu.spring24.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Data
+@Entity
+@Table(name = "email")
+@NoArgsConstructor
 public class Email {
 
-    private int id;
+    @Id
+    @GeneratedValue
+    private Integer id;
 
     private String email;
 
@@ -10,11 +24,4 @@ public class Email {
         this.email = email;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 }
