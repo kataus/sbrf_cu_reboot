@@ -22,6 +22,7 @@ public class App {
         SubscribableChannel channel2 = ctx.getBean( "channel2", SubscribableChannel.class );
 
         channel2.subscribe( System.out::println );
+
         new Thread( () -> {
             while ( true ) {
                 channel2.send( channel1.receive() );
@@ -34,6 +35,15 @@ public class App {
         Thread.sleep( 2000 );
 
         channel1.send( MessageBuilder.withPayload( "Hello3" ).build() );
+        channel2.subscribe( m -> System.out.println( "i'm Jokker, i get your message " + m.toString() + ", ha-ha-ha" ));
+
+        Thread.sleep( 2000 );
+
+        channel1.send( MessageBuilder.withPayload( "Hello4" ).build() );
+
+        Thread.sleep( 2000 );
+
+        channel1.send( MessageBuilder.withPayload( "Hello5" ).build() );
 
         Thread.sleep( 100000 );
     }
@@ -45,6 +55,6 @@ public class App {
 
     @Bean
     public SubscribableChannel channel2() {
-        return MessageChannels.direct( "channel2" ).get();
+        return MessageChannels.publishSubscribe( "channel2" ).get();
     }
 }
